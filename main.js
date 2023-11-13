@@ -1,5 +1,2 @@
-import './public/bundle.css'
-import { App } from "./src/js";
-App('#app')
-
-
+import './src/js';
+import './public/bundle.css';

@@ -1,14 +1,12 @@
 import { fetchItem } from '../peticiones/fetchItem';
-
-document.addEventListener('DOMContentLoaded', () => {
-	const contenedor = document.getElementById('populares');
-	const popup = document.getElementById('media');
-	contenedor.addEventListener('click', async (e) => {
-		if (e.target.closest('.main__media')) {
-			popup.classList.add('media--active');
-			const id = e.target.closest('.main__media').dataset.id;
-			const resultado = await fetchItem(id);
-			const plantilla = `
+const contenedor = document.getElementById('populares');
+const popup = document.getElementById('media');
+contenedor.addEventListener('click', async (e) => {
+	if (e.target.closest('.main__media')) {
+		popup.classList.add('media--active');
+		const id = e.target.closest('.main__media').dataset.id;
+		const resultado = await fetchItem(id);
+		const plantilla = `
             <div class="media__backdrop">
                 <img src="https://image.tmdb.org/t/p/w500//${resultado.backdrop_path}"
                     class="media__backdrop-image" />
@@ -28,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                 </svg>
             </button>`;
-			document.querySelector('#media .media__contenedor').innerHTML = plantilla;
-		}
-	});
+		document.querySelector('#media .media__contenedor').innerHTML = plantilla;
+	}
 });
